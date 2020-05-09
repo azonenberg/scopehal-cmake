@@ -16,7 +16,11 @@ pkg_check_modules(GLM glm>=0.9.8)
 pkg_search_module(GLM REQUIRED glm>=0.9.8)
 find_package(FFTS)
 
-add_subdirectory("${PROJECT_SOURCE_DIR}/doc")
+option(BUILD_DOCUMENTATION "Build documentation" ON)
+if(BUILD_DOCUMENTATION)
+	add_subdirectory("${PROJECT_SOURCE_DIR}/doc")
+endif()
+
 add_subdirectory("${PROJECT_SOURCE_DIR}/lib/graphwidget")
 add_subdirectory("${PROJECT_SOURCE_DIR}/lib/scopehal")
 add_subdirectory("${PROJECT_SOURCE_DIR}/lib/scopeprotocols")
